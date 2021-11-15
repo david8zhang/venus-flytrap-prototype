@@ -20,5 +20,5 @@
     "typeRoots": ["node_modules/@types", "node_module/phaser/types"],
     "types": ["phaser"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "node_modules/phaser3-rex-plugins-types/**/*.d.ts"]
 }
