@@ -1,0 +1,61 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add typescript -D
+
+PATH: 
+  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/David/Desktop/experiments/phaser3/phaser3-typescript-template/node_modules/.bin:/Users/David/Documents/platform-tools:/Users/David/.rbenv/shims:/Users/David/gocode/bin:/Users/David/anaconda3/bin:/Users/David/Desktop/misc/Pokemon-Terminal-master:/Users/David/anaconda/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Users/David/Documents/platform-tools:/Users/David/.rbenv/shims:/Users/David/gocode/bin:/Users/David/anaconda3/bin:/Users/David/Desktop/misc/Pokemon-Terminal-master:/Users/David/anaconda/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Users/David/Documents/platform-tools:/Users/David/.rbenv/shims:/Users/David/gocode/bin:/Users/David/anaconda3/bin:/Users/David/Desktop/misc/Pokemon-Terminal-master:/Users/David/anaconda/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Users/David/Documents/platform-tools:/Users/David/.rvm/gems/ruby-2.2.0@rails_decal/bin:/Users/David/.rvm/gems/ruby-2.2.0@global/bin:/Users/David/.rvm/rubies/ruby-2.2.0/bin:/Users/David/.rbenv/shims:/Users/David/gocode/bin:/Users/David/anaconda3/bin:/Users/David/Desktop/misc/Pokemon-Terminal-master:/Users/David/anaconda/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/go/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/David/Documents/platform-tools:/Users/David/.rvm/gems/ruby-2.2.0@rails_decal/bin:/Users/David/.rvm/gems/ruby-2.2.0@global/bin:/Users/David/.rvm/rubies/ruby-2.2.0/bin:/Users/David/.rbenv/shims:/Users/David/gocode/bin:/Users/David/anaconda3/bin:/Users/David/Desktop/misc/Pokemon-Terminal-master:/Users/David/anaconda/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Users/David/google-cloud-sdk/bin:/usr/local/Cellar/mongodb/3.6.4//bin:/Users/David/.rvm/bin:/usr/local/Cellar/mongodb/3.6.4//bin:/usr/local/Cellar/mongodb/3.6.4//bin:/usr/local/bin:/usr/local/Cellar/mongodb/3.6.4//bin:/usr/local/bin:/usr/local/Cellar/mongodb/3.6.4//bin:/Users/David/.npm-global/bin
+
+Yarn version: 
+  1.7.0
+
+Node version: 
+  12.16.2
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, lstat '/Users/David/Library/Caches/Yarn/v1/npm-rxjs-6.6.3-8ca84635c4daa900c0d3967a6ee7ac60271ee552/operator/mergeMap.js'
+
+npm manifest: 
+  {
+  	"name": "phaser3-parcel-template",
+  	"version": "1.0.0",
+  	"description": "A template project for Phaser 3 using Parceljs",
+  	"scripts": {
+  		"start": "parcel src/index.html -p 8000",
+  		"build": "parcel build src/index.html --out-dir dist",
+  		"test": "echo \"Error: no test specified\" && exit 1"
+  	},
+  	"author": "supertommy",
+  	"license": "MIT",
+  	"repository": {
+  		"type": "git",
+  		"url": "https://github.com/ourcade/phaser3-parcel-template.git"
+  	},
+  	"homepage": "https://github.com/ourcade/phaser3-parcel-template",
+  	"devDependencies": {
+  		"@babel/core": "^7.10.5",
+  		"@babel/plugin-proposal-class-properties": "^7.10.4",
+  		"babel-eslint": "^10.1.0",
+  		"eslint": "^6.8.0",
+  		"minimist": ">=1.2.2",
+  		"parcel-plugin-clean-easy": "^1.0.2",
+  		"parcel-plugin-static-files-copy": "^2.4.3"
+  	},
+  	"dependencies": {
+  		"phaser": "^3.50.1"
+  	},
+  	"parcelCleanPaths": [
+  		"dist"
+  	],
+  	"staticFiles": {
+  		"staticPath": "public",
+  		"watcherGlob": "**"
+  	}
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
