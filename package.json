@@ -4,7 +4,6 @@
   "description": "A typescript template project for Phaser 3 using Parceljs",
   "scripts": {
     "start": "parcel src/index.html -p 8000",
-    "clean": "rm -rf node_modules && npm install",
     "build": "parcel build src/index.html --out-dir dist --no-minify",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx"
@@ -18,13 +17,13 @@
   "homepage": "https://github.com/ourcade/phaser3-parcel-template",
   "devDependencies": {
     "@babel/core": "^7.16.0",
+    "@babel/plugin-proposal-class-properties": "^7.16.0",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "cssnano": "^4.1.11",
     "eslint": "^6.8.0",
     "minimist": ">=1.2.2",
-    "parcel": "^1.12.3",
-    "parcel-bundler": "^1.12.3",
+    "parcel": "1.12.3",
     "parcel-plugin-clean-easy": "^1.0.2",
     "parcel-plugin-static-files-copy": "^2.4.3",
     "postcss": "^8.3.11",

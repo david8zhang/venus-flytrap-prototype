@@ -4,6 +4,7 @@ import { Player } from '~/lib/Player'
 
 export default class Game extends Phaser.Scene {
   private player!: Player
+  private flies!: Phaser.GameObjects.Group
   public static GAME_WIDTH = 800
   public static GAME_HEIGHT = 600
 
@@ -13,7 +14,17 @@ export default class Game extends Phaser.Scene {
 
   create() {
     this.player = new Player(this)
-    const fly = new Fly(this, 100, 100)
+    this.flies = this.physics.add.group({
+      classType: Fly,
+    })
+    this.flies.add(new Fly(this, 100, 100).sprite)
     this.cameras.main.setBackgroundColor('#99CCFF')
+  }
+
+  update() {
+    this.flies.children.entries.forEach((child) => {
+      const fly: Fly = child.getData('ref') as Fly
+      fly.update()
+    })
   }
 }
