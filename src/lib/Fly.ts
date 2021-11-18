@@ -17,6 +17,9 @@ export class Fly {
     this.sprite = this.scene.physics.add.sprite(x, y, 'fly')
     this.sprite.setScale(0.025)
     this.sprite.setData('ref', this)
+
+    this.scene.physics.world.enableBody(this.sprite, Phaser.Physics.Arcade.DYNAMIC_BODY)
+
     setInterval(() => {
       const directions = [Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT]
       this.currDirection = directions[Math.floor(Math.random() * directions.length)]
@@ -30,5 +33,9 @@ export class Fly {
       this.sprite.x = 0
       this.sprite.y = Utils.getRandomNum(100, Game.GAME_HEIGHT - 10)
     }
+  }
+
+  destroy() {
+    this.sprite.destroy()
   }
 }

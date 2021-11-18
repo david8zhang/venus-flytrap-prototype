@@ -1,4 +1,5 @@
 import GameScene from '../scenes/Game'
+import { Fly } from './Fly'
 
 export class Player {
   private scene: GameScene
@@ -16,6 +17,7 @@ export class Player {
     this.headSprite = scene.physics.add.sprite(0, 0, 'pirahna-plant')
     this.headSprite.setScale(0.25)
     this.headSprite.setPosition(this.defaultX, this.defaultY)
+    this.scene.physics.world.enableBody(this.headSprite, Phaser.Physics.Arcade.DYNAMIC_BODY)
 
     this.scene.input.on(
       'pointerup',
@@ -34,6 +36,15 @@ export class Player {
         }
       },
       this
+    )
+
+    const collider = this.scene.physics.add.overlap(
+      this.headSprite,
+      this.scene.flies,
+      (obj1, obj2) => {
+        const fly = obj2.getData('ref') as Fly
+        fly.destroy()
+      }
     )
   }
 }
