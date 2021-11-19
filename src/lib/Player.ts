@@ -44,14 +44,12 @@ export class Player {
       this
     )
 
-    const collider = this.scene.physics.add.overlap(
-      this.headSprite,
-      this.scene.flies,
-      (obj1, obj2) => {
+    this.scene.getEnemyGroups().forEach((group: Phaser.GameObjects.Group) => {
+      this.scene.physics.add.overlap(this.headSprite, group, (obj1, obj2) => {
         const fly = obj2.getData('ref') as Fly
         fly.destroy()
         this.onScored.forEach((handler) => handler(1))
-      }
-    )
+      })
+    })
   }
 }
