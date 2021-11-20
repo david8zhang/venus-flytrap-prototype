@@ -14,6 +14,7 @@ const config: any = {
       // debug: true,
     },
   },
+  pixelArt: true,
   scene: [Preloader, Game],
 }
 

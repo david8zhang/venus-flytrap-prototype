@@ -1,4 +1,5 @@
 import Game from '~/scenes/Game'
+import { SPRITE_SCALE } from '~/util/constants'
 import { Utils } from '~/util/utils'
 
 enum Direction {
@@ -17,7 +18,16 @@ export class Fly {
   constructor(scene: Game, x: number, y: number, speed?: number) {
     this.scene = scene
     this.sprite = this.scene.physics.add.sprite(x, y, 'fly')
-    this.sprite.setScale(-0.025, 0.025)
+    this.scene.anims.create({
+      key: 'default',
+      frames: this.scene.anims.generateFrameNumbers('fly', {
+        start: 0,
+        end: 3,
+      }),
+      frameRate: 24,
+    })
+    this.sprite.play({ key: 'default', repeat: -1 })
+    this.sprite.setScale(SPRITE_SCALE)
     this.sprite.setData('ref', this)
     this.speed = speed ? speed : 100
 
