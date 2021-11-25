@@ -1,5 +1,5 @@
 import Game from '~/scenes/Game'
-import { SPRITE_SCALE } from '~/util/constants'
+import { Constants } from '~/util/constants'
 import { Utils } from '~/util/utils'
 
 enum Direction {
@@ -27,7 +27,7 @@ export class Fly {
       frameRate: 24,
     })
     this.sprite.play({ key: 'default', repeat: -1 })
-    this.sprite.setScale(SPRITE_SCALE)
+    this.sprite.setScale(Constants.SPRITE_SCALE)
     this.sprite.setData('ref', this)
     this.speed = speed ? speed : 100
 
@@ -50,9 +50,12 @@ export class Fly {
 
   update() {
     this.sprite.setVelocity(this.speed, 0)
-    if (this.sprite.x > Game.GAME_WIDTH) {
+    if (this.sprite.x > Constants.GAME_WIDTH) {
       this.sprite.x = 0
-      this.sprite.y = Utils.getRandomNum(0, Game.GAME_HEIGHT / 2)
+      this.sprite.y = Utils.getRandomNum(
+        Constants.SPAWN_THRESHOLD.upper,
+        Constants.SPAWN_THRESHOLD.lower
+      )
     }
   }
 
