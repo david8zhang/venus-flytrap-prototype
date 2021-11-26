@@ -1,13 +1,9 @@
 import Phaser from 'phaser'
-import RingToTileXYArray from 'phaser3-rex-plugins/plugins/board/board/ring/RingToTileXYArray'
-import { Fly } from '~/lib/Fly'
 import { Player } from '~/lib/Player'
 import { Spawner } from '~/lib/Spawner'
 
 export default class Game extends Phaser.Scene {
   public player!: Player
-  public static GAME_WIDTH = 800
-  public static GAME_HEIGHT = 600
   private spawners: Spawner[] = []
 
   private score = 0
