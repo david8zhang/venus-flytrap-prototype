@@ -15,6 +15,8 @@ export class Fly {
   private currDirection: Direction = Direction.RIGHT
   private speed: number
 
+  public onReachedRightEdge: Array<() => void> = []
+
   constructor(scene: Game, x: number, y: number, speed?: number) {
     this.scene = scene
     this.sprite = this.scene.physics.add.sprite(x, y, 'fly')
@@ -56,6 +58,7 @@ export class Fly {
         Constants.SPAWN_THRESHOLD.upper,
         Constants.SPAWN_THRESHOLD.lower
       )
+      this.onReachedRightEdge.forEach((handler) => handler())
     }
   }
 

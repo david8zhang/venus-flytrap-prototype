@@ -1,29 +1,22 @@
 import Phaser from 'phaser'
 import { Player } from '~/lib/Player'
+import { Score } from '~/lib/Score'
 import { Spawner } from '~/lib/Spawner'
 
 export default class Game extends Phaser.Scene {
   public player!: Player
   private spawners: Spawner[] = []
-
-  private score = 0
-  private scoreText
+  // private score!: Score
 
   constructor() {
     super('game')
   }
 
-  create() {
+  create(): void {
     this.cameras.main.setBackgroundColor('#99CCFF')
-    this.scoreText = this.add.text(16, 16, 'score: 0', {
-      fontSize: '32px',
-    })
     this.spawners.push(new Spawner(this))
     this.player = new Player(this)
-    this.player.onScored.push((points) => {
-      this.score += points
-      this.scoreText.setText('Score: ' + this.score)
-    })
+    new Score(this, this.player, this.spawners)
   }
 
   getEnemyGroups(): Phaser.GameObjects.Group[] {
@@ -32,7 +25,7 @@ export default class Game extends Phaser.Scene {
     })
   }
 
-  update() {
+  update(): void {
     this.spawners.forEach((spawner) => {
       spawner.update()
     })
