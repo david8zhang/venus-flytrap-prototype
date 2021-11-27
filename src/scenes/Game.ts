@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { Pie } from '~/lib/Pie'
 import { Player } from '~/lib/Player'
 import { Score } from '~/lib/Score'
 import { Spawner } from '~/lib/Spawner'
@@ -7,7 +8,7 @@ import { Constants } from '~/util/constants'
 export default class Game extends Phaser.Scene {
   public player!: Player
   private spawners: Spawner[] = []
-  // private score!: Score
+  private pie
 
   constructor() {
     super('game')
@@ -24,7 +25,8 @@ export default class Game extends Phaser.Scene {
     this.cameras.main.setBackgroundColor('#99CCFF')
     this.spawners.push(new Spawner(this))
     this.player = new Player(this)
-    new Score(this, this.player, this.spawners)
+    const score = new Score(this, this.player, this.spawners)
+    this.pie = new Pie(this, score)
   }
 
   getEnemyGroups(): Phaser.GameObjects.Group[] {

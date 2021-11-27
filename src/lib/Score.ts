@@ -3,15 +3,17 @@ import Game from '~/scenes/Game'
 import { Fly } from './Fly'
 import { Spawner } from './Spawner'
 
-const MAX_HEALTH = 100
+export const MAX_HEALTH = 20
 export class Score {
   private scene: Game
 
   private score = 0
-  private scoreText
+  private scoreText: Phaser.GameObjects.Text
 
-  private health = MAX_HEALTH
-  private healthText
+  public health = MAX_HEALTH
+  private healthText: Phaser.GameObjects.Text
+
+  public onHealthDecreased: Array<() => void> = []
 
   constructor(scene: Game, player: Player, spawners: Spawner[]) {
     this.scene = scene
@@ -45,5 +47,6 @@ export class Score {
   decreaseHealth(): void {
     this.health -= 1
     this.healthText.setText('Health: ' + this.health)
+    this.onHealthDecreased.forEach((handler) => handler())
   }
 }
