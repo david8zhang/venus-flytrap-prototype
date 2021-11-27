@@ -21,6 +21,7 @@ export default class Preloader extends Phaser.Scene {
       'plant/anims/plant-bite.json'
     )
     this.load.image('stem', 'plant/plant-stem-bite.png')
+    this.load.image('bg', 'bg/bg.png')
   }
   create() {
     this.scene.start('game')
