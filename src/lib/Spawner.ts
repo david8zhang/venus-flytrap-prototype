@@ -33,7 +33,10 @@ export class Spawner {
   }
 
   spawnEnemy(): void {
-    const randY = Utils.getRandomNum(20, Constants.GAME_HEIGHT / 2)
+    const randY = Utils.getRandomNum(
+      Constants.SPAWN_THRESHOLD.upper,
+      Constants.SPAWN_THRESHOLD.lower
+    )
     const randSpeed = Utils.getRandomNum(50, 100)
     const fly = new Fly(this.scene, 0, randY, randSpeed)
     this.enemies.add(fly.sprite)
