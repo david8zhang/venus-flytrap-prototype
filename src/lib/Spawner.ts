@@ -7,6 +7,7 @@ export class Spawner {
   private scene: Game
   public enemies: Phaser.GameObjects.Group
   public numEnemiesOnScreen = 5
+  public onNewEnemy: Array<(enemy: Fly) => void> = []
 
   constructor(scene: Game) {
     this.scene = scene
@@ -34,7 +35,9 @@ export class Spawner {
   spawnEnemy(): void {
     const randY = Utils.getRandomNum(20, Constants.GAME_HEIGHT / 2)
     const randSpeed = Utils.getRandomNum(50, 100)
-    this.enemies.add(new Fly(this.scene, 0, randY, randSpeed).sprite)
+    const fly = new Fly(this.scene, 0, randY, randSpeed)
+    this.enemies.add(fly.sprite)
+    this.onNewEnemy.forEach((handler) => handler(fly))
   }
 
   update(): void {
