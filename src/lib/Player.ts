@@ -1,5 +1,4 @@
 import { Constants } from '~/util/constants'
-import Game from '../scenes/Game'
 import GameScene from '../scenes/Game'
 import { Fly } from './Fly'
 
@@ -89,11 +88,11 @@ export class Player {
     const timeline2 = this.scene.tweens.createTimeline()
     timeline2.add({
       targets: stem,
-      scaleY: '+=32',
+      scaleY: '+=30',
     })
     timeline2.add({
       targets: stem,
-      scaleY: '-=32',
+      scaleY: '-=30',
       delay: 1000,
     })
 

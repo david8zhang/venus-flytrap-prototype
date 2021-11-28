@@ -3,7 +3,7 @@ export class Constants {
   public static GAME_HEIGHT = 600
   public static SPRITE_SCALE = 2
   public static SPAWN_THRESHOLD = {
-    upper: 20,
+    upper: 50,
     lower: Constants.GAME_HEIGHT / 2,
   }
 }

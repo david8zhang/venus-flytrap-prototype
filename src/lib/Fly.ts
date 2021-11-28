@@ -55,7 +55,7 @@ export class Fly {
     if (this.sprite.x > Constants.GAME_WIDTH) {
       this.sprite.x = 0
       this.sprite.y = Utils.getRandomNum(
-        Constants.SPAWN_THRESHOLD.upper,
+        Constants.SPAWN_THRESHOLD.upper + 10,
         Constants.SPAWN_THRESHOLD.lower
       )
       this.onReachedRightEdge.forEach((handler) => handler())
