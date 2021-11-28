@@ -6,11 +6,13 @@ export default class Preloader extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('pirahna-plant', 'pirahna-plant.png')
+    // Fly
     this.load.spritesheet('fly', 'fly/fly-Sheet.png', {
       frameWidth: 32,
       frameHeight: 32,
     })
+
+    // Player
     this.load.spritesheet('plant', 'plant/plant-head-Sheet.png', {
       frameWidth: 32,
       frameHeight: 32,
@@ -21,6 +23,15 @@ export default class Preloader extends Phaser.Scene {
       'plant/anims/plant-bite.json'
     )
     this.load.image('stem', 'plant/plant-stem-bite.png')
+
+    // BG
+    this.load.image('bg', 'bg/bg.png')
+
+    // Pie
+    this.load.spritesheet('pie', 'pie/pie-Sheet.png', {
+      frameWidth: 64,
+      frameHeight: 64,
+    })
   }
   create() {
     this.scene.start('game')

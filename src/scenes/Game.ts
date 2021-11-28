@@ -1,29 +1,32 @@
 import Phaser from 'phaser'
+import { Pie } from '~/lib/Pie'
 import { Player } from '~/lib/Player'
+import { Score } from '~/lib/Score'
 import { Spawner } from '~/lib/Spawner'
+import { Constants } from '~/util/constants'
 
 export default class Game extends Phaser.Scene {
   public player!: Player
   private spawners: Spawner[] = []
-
-  private score = 0
-  private scoreText
+  private pie
 
   constructor() {
     super('game')
   }
 
-  create() {
+  create(): void {
+    const bg = this.add.image(
+      Constants.GAME_WIDTH / 2,
+      Constants.GAME_HEIGHT / 2,
+      'bg'
+    )
+    bg.setScale(Constants.SPRITE_SCALE)
+
     this.cameras.main.setBackgroundColor('#99CCFF')
-    this.scoreText = this.add.text(16, 16, 'score: 0', {
-      fontSize: '32px',
-    })
     this.spawners.push(new Spawner(this))
     this.player = new Player(this)
-    this.player.onScored.push((points) => {
-      this.score += points
-      this.scoreText.setText('Score: ' + this.score)
-    })
+    const score = new Score(this, this.player, this.spawners)
+    this.pie = new Pie(this, score)
   }
 
   getEnemyGroups(): Phaser.GameObjects.Group[] {
@@ -32,7 +35,7 @@ export default class Game extends Phaser.Scene {
     })
   }
 
-  update() {
+  update(): void {
     this.spawners.forEach((spawner) => {
       spawner.update()
     })
