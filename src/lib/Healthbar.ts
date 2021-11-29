@@ -7,7 +7,7 @@ export class Healthbar {
 
   public static LENGTH = 200
   public static WIDTH = 24
-  public static MAX_HEALTH = 20
+  public static MAX_HEALTH = 30
   public static Y_POS = 10
   public static X_POS =
     Constants.GAME_WIDTH - (Healthbar.LENGTH + Healthbar.Y_POS)
@@ -55,7 +55,7 @@ export class Healthbar {
 
   draw(): void {
     const percentage = this.currHealth / Healthbar.MAX_HEALTH
-    const length = Math.floor(percentage * Healthbar.LENGTH)
+    const length = Math.max(0, Math.floor(percentage * Healthbar.LENGTH))
     this.bar.fillStyle(0x000000)
 
     // Draw a black rectangle for healthbar BG
@@ -66,10 +66,15 @@ export class Healthbar {
       Healthbar.WIDTH
     )
 
-    console.log(length)
+    if (percentage <= 0.33) {
+      this.bar.fillStyle(0xff0000)
+    } else if (percentage <= 0.67) {
+      this.bar.fillStyle(0xf1c40f)
+    } else {
+      this.bar.fillStyle(0x2ecc71)
+    }
 
     // Draw a colored rectangle to represent health
-    this.bar.fillStyle(0x2ecc71)
     this.bar.fillRect(Healthbar.X_POS, Healthbar.Y_POS, length, Healthbar.WIDTH)
   }
 }
