@@ -8,6 +8,7 @@ import { Constants } from '~/util/constants'
 
 export default class Game extends Phaser.Scene {
   public player!: Player
+  public score!: Score
   private pie!: Pie
   private healthbar!: Healthbar
   private spawners: Spawner[] = []
@@ -31,7 +32,11 @@ export default class Game extends Phaser.Scene {
     this.cameras.main.setBackgroundColor('#99CCFF')
     this.spawners.push(new Spawner(this))
     this.player = new Player(this)
-    const score = new Score(this, this.player)
+    this.score = new Score(this, this.player)
+    this.spawners.forEach((spawner) => {
+      spawner.configurePlayer(this.player)
+    })
+
     this.healthbar = new Healthbar(this)
     this.pie = new Pie(this, this.healthbar)
   }

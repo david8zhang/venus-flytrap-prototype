@@ -68,7 +68,6 @@ export class Player {
         !this.isMovingSprites[spriteToMoveIndex]
       ) {
         this.isMovingSprites[spriteToMoveIndex] = true
-        const spriteToMove = this.sprites[spriteToMoveIndex]
         this.moveSprite(this.sprites[spriteToMoveIndex], () => {
           this.isMovingSprites[spriteToMoveIndex] = false
         })

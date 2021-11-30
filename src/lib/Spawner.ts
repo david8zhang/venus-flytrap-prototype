@@ -2,11 +2,12 @@ import Game from '~/scenes/Game'
 import { Constants } from '~/util/constants'
 import { Utils } from '~/util/utils'
 import { Fly } from './Fly'
+import { Player } from './Player'
 
 export class Spawner {
   private scene: Game
   public enemies: Phaser.GameObjects.Group
-  public numEnemiesOnScreen = 5
+  public maxEnemiesOnScreen = 1
   public onNewEnemy: Array<(enemy: Fly) => void> = []
 
   constructor(scene: Game) {
@@ -14,10 +15,10 @@ export class Spawner {
     this.enemies = scene.add.group({ classType: Fly })
     this.spawnEnemies()
     setInterval(() => {
-      if (this.enemies.children.entries.length < this.numEnemiesOnScreen) {
+      if (this.enemies.children.entries.length < this.maxEnemiesOnScreen) {
         for (
           let i = 0;
-          i < this.numEnemiesOnScreen - this.enemies.children.entries.length;
+          i < this.maxEnemiesOnScreen - this.enemies.children.entries.length;
           i++
         ) {
           this.spawnEnemy()
@@ -26,8 +27,17 @@ export class Spawner {
     }, 1000)
   }
 
+  configurePlayer(player: Player): void {
+    player.onScored.push(this.setSpawnRate.bind(this))
+  }
+
+  setSpawnRate(): void {
+    const score = this.scene.score.getScore()
+    this.maxEnemiesOnScreen = Constants.getFlySpawnFromScore(score)
+  }
+
   spawnEnemies(): void {
-    for (let i = 0; i < this.numEnemiesOnScreen; i++) {
+    for (let i = 0; i < this.maxEnemiesOnScreen; i++) {
       this.spawnEnemy()
     }
   }
