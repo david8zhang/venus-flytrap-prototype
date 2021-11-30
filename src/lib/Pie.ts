@@ -1,16 +1,18 @@
 import { Scene } from 'phaser'
 import { Constants } from '~/util/constants'
-import { MAX_HEALTH, Score } from './Score'
+import { Healthbar } from './Healthbar'
 
 export class Pie {
   private sprite: Phaser.GameObjects.Sprite
-  private score: Score
+  private healthbar: Healthbar
 
-  constructor(scene: Scene, score: Score) {
-    this.score = score
+  constructor(scene: Scene, healthbar: Healthbar) {
+    this.healthbar = healthbar
     this.sprite = scene.add.sprite(706, 362, 'pie')
     this.sprite.setScale(Constants.SPRITE_SCALE)
-    score.onHealthDecreased.push(() => this.playHurtEffect(scene.cameras.main))
+    this.healthbar.onHealthDecreased.push(() =>
+      this.playHurtEffect(scene.cameras.main)
+    )
 
     this.createAnimations(scene)
   }
@@ -28,14 +30,18 @@ export class Pie {
   }
 
   playIdleAnim(): void {
-    if (this.score.health > (MAX_HEALTH / 3) * 2) this.sprite.play('pie1')
-    else if (this.score.health > MAX_HEALTH / 3) this.sprite.play('pie2')
+    if (this.healthbar.currHealth > (Healthbar.MAX_HEALTH / 3) * 2)
+      this.sprite.play('pie1')
+    else if (this.healthbar.currHealth > Healthbar.MAX_HEALTH / 3)
+      this.sprite.play('pie2')
     else this.sprite.play('pie3')
   }
 
   playHurtAnim(): void {
-    if (this.score.health > (MAX_HEALTH / 3) * 2) this.sprite.play('pie1-hurt')
-    else if (this.score.health > MAX_HEALTH / 3) this.sprite.play('pie2-hurt')
+    if (this.healthbar.currHealth > (Healthbar.MAX_HEALTH / 3) * 2)
+      this.sprite.play('pie1-hurt')
+    else if (this.healthbar.currHealth > Healthbar.MAX_HEALTH / 3)
+      this.sprite.play('pie2-hurt')
     else this.sprite.play('pie3-hurt')
   }
 
