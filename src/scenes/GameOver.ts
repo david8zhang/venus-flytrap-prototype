@@ -63,6 +63,7 @@ export default class GameOver extends Phaser.Scene {
         const gameScene = this.scene.get('game')
         gameScene.registry.destroy()
         gameScene.scene.restart()
+        gameScene.sound.removeAll()
         this.scene.start('game')
       })
 
