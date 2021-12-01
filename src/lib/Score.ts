@@ -11,7 +11,8 @@ export class Score {
     this.scene = scene
 
     this.scoreText = this.scene.add.text(16, 10, 'Score: 0', {
-      fontSize: '24px',
+      fontSize: '16px',
+      fontFamily: 'Daydream',
     })
     player.onScored.push(this.increaseScore.bind(this))
   }

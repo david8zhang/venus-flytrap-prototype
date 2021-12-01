@@ -6,7 +6,7 @@ export class Healthbar {
   private scene: Game
 
   public static LENGTH = 200
-  public static WIDTH = 24
+  public static WIDTH = 20
   public static MAX_HEALTH = 30
   public static Y_POS = 10
   public static X_POS =
@@ -27,8 +27,9 @@ export class Healthbar {
     console.log('Went here!')
 
     this.scene.add
-      .text(Healthbar.X_POS - 65, Healthbar.Y_POS, 'HP: ', {
-        fontSize: '24px',
+      .text(Healthbar.X_POS - 50, Healthbar.Y_POS, 'HP:', {
+        fontSize: '16px',
+        fontFamily: 'Daydream',
       })
       .setOrigin(0)
   }
