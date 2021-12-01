@@ -34,6 +34,10 @@ export default class Preloader extends Phaser.Scene {
       frameHeight: 64,
     })
 
+    // Particle
+    this.load.image('particle_fly1', 'particle/particle-fly1.png')
+    this.load.image('particle_fly2', 'particle/particle-fly2.png')
+
     // Audio
     this.load.audio('background-music', 'music/glorious-morning.mp3')
     this.load.audio('chomp', 'music/chomp.mp3')

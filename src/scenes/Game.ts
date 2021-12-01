@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import { Healthbar } from '~/lib/Healthbar'
+import { Particles } from '~/lib/Particles'
 import { Pie } from '~/lib/Pie'
 import { Player } from '~/lib/Player'
 import { Score } from '~/lib/Score'
@@ -46,6 +47,7 @@ export default class Game extends Phaser.Scene {
     })
     this.healthbar = new Healthbar(this)
     this.pie = new Pie(this, this.healthbar)
+    new Particles(this)
     this.setupSound()
   }
 

@@ -16,6 +16,7 @@ export class Fly {
   private speed: number
 
   public onReachedRightEdge: Array<() => void> = []
+  public onDestroyed: Array<(x: number, y: number) => void> = []
 
   constructor(scene: Game, x: number, y: number, speed?: number) {
     this.scene = scene
@@ -64,5 +65,6 @@ export class Fly {
 
   destroy(): void {
     this.sprite.destroy()
+    this.onDestroyed.forEach((handler) => handler(this.sprite.x, this.sprite.y))
   }
 }
