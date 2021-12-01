@@ -7,7 +7,7 @@ export class Healthbar {
 
   public static LENGTH = 200
   public static WIDTH = 20
-  public static MAX_HEALTH = 30
+  public static MAX_HEALTH = 1
   public static Y_POS = 10
   public static X_POS =
     Constants.GAME_WIDTH - (Healthbar.LENGTH + Healthbar.Y_POS)
@@ -52,6 +52,17 @@ export class Healthbar {
     this.currHealth -= 1
     this.onHealthDecreased.forEach((handler) => handler())
     this.draw()
+    if (this.currHealth == 0) {
+      this.scene.cameras.main.fadeOut(2000, 0, 0, 0)
+      this.scene.cameras.main.once(
+        Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
+        () => {
+          this.scene.scene.start('gameover', {
+            score: this.scene.score.getScore(),
+          })
+        }
+      )
+    }
   }
 
   draw(): void {

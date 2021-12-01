@@ -33,7 +33,11 @@ export default class Preloader extends Phaser.Scene {
       frameWidth: 64,
       frameHeight: 64,
     })
+
+    // Game Over
+    this.load.image('gameover', 'gameover/gameover.png')
   }
+
   create() {
     this.scene.start('start')
   }
