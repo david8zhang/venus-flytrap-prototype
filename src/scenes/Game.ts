@@ -11,7 +11,7 @@ export default class Game extends Phaser.Scene {
   public score!: Score
   private pie!: Pie
   private healthbar!: Healthbar
-  private spawners: Spawner[] = []
+  private spawners!: Spawner[]
 
   constructor() {
     super('game')
@@ -33,7 +33,7 @@ export default class Game extends Phaser.Scene {
     })
 
     this.cameras.main.setBackgroundColor('#99CCFF')
-    this.spawners.push(new Spawner(this))
+    this.spawners = [new Spawner(this)]
     this.player = new Player(this)
     this.score = new Score(this, this.player)
     this.spawners.forEach((spawner) => {

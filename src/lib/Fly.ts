@@ -31,7 +31,8 @@ export class Fly {
     this.sprite.play({ key: 'default', repeat: -1 })
     this.sprite.setScale(Constants.SPRITE_SCALE)
     this.sprite.setData('ref', this)
-    this.speed = speed ? speed : 100
+    // this.speed = speed ? speed : 100
+    this.speed = 1000
 
     this.scene.physics.world.enableBody(
       this.sprite,

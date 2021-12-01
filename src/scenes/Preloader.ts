@@ -38,7 +38,11 @@ export default class Preloader extends Phaser.Scene {
     this.load.audio('background-music', 'music/glorious-morning.mp3')
     this.load.audio('chomp', 'music/chomp.mp3')
     this.load.audio('hurt', 'music/hurt.wav')
+
+    // Game Over
+    this.load.image('gameover', 'gameover/gameover.png')
   }
+
   create() {
     this.scene.start('start')
   }
