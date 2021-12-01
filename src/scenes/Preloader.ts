@@ -26,6 +26,7 @@ export default class Preloader extends Phaser.Scene {
 
     // BG
     this.load.image('bg', 'bg/bg.png')
+    this.load.image('splash', 'bg/splash.png')
 
     // Pie
     this.load.spritesheet('pie', 'pie/pie-Sheet.png', {

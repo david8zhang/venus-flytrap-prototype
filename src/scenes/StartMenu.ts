@@ -48,7 +48,7 @@ export class StartMenu extends Phaser.Scene {
     const bg = this.add.image(
       Constants.GAME_WIDTH / 2,
       Constants.GAME_HEIGHT / 2,
-      'bg'
+      'splash'
     )
     bg.setScale(Constants.SPRITE_SCALE)
     this.cameras.main.setBackgroundColor('#99CCFF')
