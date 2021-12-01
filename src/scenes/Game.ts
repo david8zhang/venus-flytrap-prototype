@@ -28,6 +28,9 @@ export default class Game extends Phaser.Scene {
       'bg'
     )
     bg.setScale(Constants.SPRITE_SCALE)
+    this.add.text(16, Constants.GAME_HEIGHT - 16, 'BGM by Waterflame', {
+      fontSize: '12px',
+    })
 
     this.cameras.main.setBackgroundColor('#99CCFF')
     this.spawners.push(new Spawner(this))

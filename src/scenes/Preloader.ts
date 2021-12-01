@@ -35,7 +35,7 @@ export default class Preloader extends Phaser.Scene {
     })
 
     // Audio
-    this.load.audio('background-music', 'music/venus-pie-trap-bg.mp3')
+    this.load.audio('background-music', 'music/glorious-morning.mp3')
     this.load.audio('chomp', 'music/chomp.mp3')
     this.load.audio('hurt', 'music/hurt.wav')
   }
