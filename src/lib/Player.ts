@@ -1,6 +1,7 @@
 import { Constants } from '~/util/constants'
 import GameScene from '../scenes/Game'
 import { Fly } from './Fly'
+import { Tutorial } from './Tutorial'
 
 export class Player {
   private scene: GameScene
@@ -38,13 +39,13 @@ export class Player {
     this.playerGroup = this.scene.physics.add.group()
     const xSpread = Constants.GAME_WIDTH / 4
 
-    for (let i = 1; i <= 3; i++) {
-      const sprite = this.scene.physics.add.sprite(
-        i * xSpread,
-        Constants.GAME_HEIGHT - 32,
-        'plant',
-        0
-      )
+    const keys = ['Q', 'W', 'E']
+    for (let i = 0; i < 3; i++) {
+      const x = (i + 1) * xSpread
+      const y = Constants.GAME_HEIGHT - 32
+
+      const sprite = this.scene.physics.add.sprite(x, y, 'plant', 0)
+      new Tutorial(this.scene, x, y - 64, keys[i])
       sprite.setScale(2)
       this.playerGroup.add(sprite)
       this.sprites.push(sprite)

@@ -34,6 +34,20 @@ export default class Preloader extends Phaser.Scene {
       frameHeight: 64,
     })
 
+    // tutorials
+    this.load.spritesheet('tutorial_Q', 'tutorial/tutorial_q-Sheet.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    })
+    this.load.spritesheet('tutorial_W', 'tutorial/tutorial_w-Sheet.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    })
+    this.load.spritesheet('tutorial_E', 'tutorial/tutorial_e-Sheet.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    })
+
     // Game Over
     this.load.image('gameover', 'gameover/gameover.png')
   }
