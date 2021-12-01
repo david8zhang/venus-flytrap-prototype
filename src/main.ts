@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 
 import Game from './scenes/Game'
+import GameOver from './scenes/GameOver'
 import Preloader from './scenes/Preloader'
 import { StartMenu } from './scenes/StartMenu'
 
@@ -24,7 +25,7 @@ const config: any = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  scene: [Preloader, StartMenu, Game],
+  scene: [Preloader, StartMenu, Game, GameOver],
 }
 
 export default new Phaser.Game(config)
