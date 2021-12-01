@@ -2,11 +2,13 @@ import Phaser from 'phaser'
 
 import Game from './scenes/Game'
 import Preloader from './scenes/Preloader'
+import { StartMenu } from './scenes/StartMenu'
 
 const config: any = {
   type: Phaser.AUTO,
   width: 800,
   height: 600,
+  parent: 'phaser',
   physics: {
     default: 'arcade',
     arcade: {
@@ -15,7 +17,14 @@ const config: any = {
     },
   },
   pixelArt: true,
-  scene: [Preloader, Game],
+  dom: {
+    createContainer: true,
+  },
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
+  scene: [Preloader, StartMenu, Game],
 }
 
 export default new Phaser.Game(config)
