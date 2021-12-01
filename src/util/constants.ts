@@ -13,4 +13,11 @@ export class Constants {
     }
     return Math.max(1, Math.floor(Math.log2(score)))
   }
+
+  public static isBrowser(browserType): boolean {
+    console.log(navigator.userAgent)
+    return (
+      navigator.userAgent.toLowerCase().indexOf(browserType.toLowerCase()) != -1
+    )
+  }
 }

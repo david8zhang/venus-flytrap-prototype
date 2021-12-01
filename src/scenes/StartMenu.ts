@@ -28,8 +28,12 @@ export class StartMenu extends Phaser.Scene {
       height: 40,
     }) as HTMLElement
 
+    const xPos = Constants.isBrowser('chrome')
+      ? this.scale.width / 3
+      : this.scale.width / 2
+
     const titleScreenDom = this.add
-      .dom(this.scale.width / 3, this.scale.height / 3, titleScreenText)
+      .dom(xPos, this.scale.height / 3, titleScreenText)
       .setOrigin(0.5)
 
     const startButtonDom = this.add
