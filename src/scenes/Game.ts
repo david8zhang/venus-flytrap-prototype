@@ -12,10 +12,15 @@ export default class Game extends Phaser.Scene {
   public score!: Score
   private pie!: Pie
   private healthbar!: Healthbar
-  private spawners: Spawner[] = []
+  private spawners!: Spawner[]
+  public shouldSkipTutorial = false
 
   constructor() {
     super('game')
+  }
+
+  init(data): void {
+    this.shouldSkipTutorial = data.shouldSkipTutorial
   }
 
   getSpawners(): Spawner[] {
@@ -29,18 +34,31 @@ export default class Game extends Phaser.Scene {
       'bg'
     )
     bg.setScale(Constants.SPRITE_SCALE)
+    this.add.text(16, Constants.GAME_HEIGHT - 16, 'BGM by Waterflame', {
+      fontSize: '12px',
+    })
 
     this.cameras.main.setBackgroundColor('#99CCFF')
-    this.spawners.push(new Spawner(this))
+    this.spawners = [new Spawner(this)]
     this.player = new Player(this)
     this.score = new Score(this, this.player)
     this.spawners.forEach((spawner) => {
       spawner.configurePlayer(this.player)
     })
-
     this.healthbar = new Healthbar(this)
     this.pie = new Pie(this, this.healthbar)
     new Particles(this)
+    this.setupSound()
+  }
+
+  setupSound(): void {
+    this.sound.play('background-music', { loop: true })
+    this.player.onScored.push(() => {
+      this.sound.play('chomp')
+    })
+    this.healthbar.onHealthDecreased.push(() => {
+      this.sound.play('hurt')
+    })
   }
 
   getEnemyGroups(): Phaser.GameObjects.Group[] {
