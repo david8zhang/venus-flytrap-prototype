@@ -39,6 +39,20 @@ export default class Preloader extends Phaser.Scene {
     this.load.audio('chomp', 'music/chomp.mp3')
     this.load.audio('hurt', 'music/hurt.wav')
 
+    // tutorials
+    this.load.spritesheet('tutorial_Q', 'tutorial/tutorial_q-Sheet.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    })
+    this.load.spritesheet('tutorial_W', 'tutorial/tutorial_w-Sheet.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    })
+    this.load.spritesheet('tutorial_E', 'tutorial/tutorial_e-Sheet.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    })
+
     // Game Over
     this.load.image('gameover', 'gameover/gameover.png')
   }

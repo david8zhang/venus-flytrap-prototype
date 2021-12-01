@@ -12,9 +12,14 @@ export default class Game extends Phaser.Scene {
   private pie!: Pie
   private healthbar!: Healthbar
   private spawners!: Spawner[]
+  public shouldSkipTutorial = false
 
   constructor() {
     super('game')
+  }
+
+  init(data): void {
+    this.shouldSkipTutorial = data.shouldSkipTutorial
   }
 
   getSpawners(): Spawner[] {

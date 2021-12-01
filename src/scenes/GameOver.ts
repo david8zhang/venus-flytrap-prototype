@@ -10,6 +10,10 @@ export default class GameOver extends Phaser.Scene {
     super('gameover')
   }
 
+  init(data): void {
+    this.score = data.score
+  }
+
   create(): void {
     this.cameras.main.fadeIn(2000, 1, 1, 1)
 
@@ -64,7 +68,7 @@ export default class GameOver extends Phaser.Scene {
         gameScene.registry.destroy()
         gameScene.scene.restart()
         gameScene.sound.removeAll()
-        this.scene.start('game')
+        this.scene.start('game', { shouldSkipTutorial: true })
       })
 
     domElementsContainer.add(gameOverTextDom)
@@ -77,9 +81,5 @@ export default class GameOver extends Phaser.Scene {
         alpha: { value: 1, duration: 1000 },
       })
     })
-  }
-
-  init(data) {
-    this.score = data.score
   }
 }
