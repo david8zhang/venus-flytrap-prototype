@@ -7,7 +7,7 @@ export class Healthbar {
 
   public static LENGTH = 200
   public static WIDTH = 20
-  public static MAX_HEALTH = 1
+  public static MAX_HEALTH = 6
   public static Y_POS = 10
   public static X_POS =
     Constants.GAME_WIDTH - (Healthbar.LENGTH + Healthbar.Y_POS)
