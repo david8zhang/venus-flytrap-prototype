@@ -33,6 +33,10 @@ export default class Preloader extends Phaser.Scene {
       frameWidth: 64,
       frameHeight: 64,
     })
+
+    // Particle
+    this.load.image('particle_fly1', 'particle/particle-fly1.png')
+    this.load.image('particle_fly2', 'particle/particle-fly2.png')
   }
   create() {
     this.scene.start('start')
