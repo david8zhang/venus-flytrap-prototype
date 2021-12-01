@@ -36,9 +36,19 @@ export default class Game extends Phaser.Scene {
     this.spawners.forEach((spawner) => {
       spawner.configurePlayer(this.player)
     })
-
     this.healthbar = new Healthbar(this)
     this.pie = new Pie(this, this.healthbar)
+    this.setupSound()
+  }
+
+  setupSound(): void {
+    this.sound.play('background-music', { loop: true })
+    this.player.onScored.push(() => {
+      this.sound.play('chomp')
+    })
+    this.healthbar.onHealthDecreased.push(() => {
+      this.sound.play('hurt')
+    })
   }
 
   getEnemyGroups(): Phaser.GameObjects.Group[] {
