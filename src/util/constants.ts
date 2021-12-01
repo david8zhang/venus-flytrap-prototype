@@ -6,4 +6,11 @@ export class Constants {
     upper: 50,
     lower: Constants.GAME_HEIGHT / 2,
   }
+
+  public static getFlySpawnFromScore(score: number): number {
+    if (score == 0) {
+      return 1
+    }
+    return Math.max(1, Math.floor(Math.log2(score)))
+  }
 }

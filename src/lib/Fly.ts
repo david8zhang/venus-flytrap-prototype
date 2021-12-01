@@ -50,7 +50,7 @@ export class Fly {
     }, 1000)
   }
 
-  update() {
+  update(): void {
     this.sprite.setVelocity(this.speed, 0)
     if (this.sprite.x > Constants.GAME_WIDTH) {
       this.sprite.x = 0
@@ -62,7 +62,7 @@ export class Fly {
     }
   }
 
-  destroy() {
+  destroy(): void {
     this.sprite.destroy()
   }
 }

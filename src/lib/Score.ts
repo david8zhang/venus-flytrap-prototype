@@ -20,4 +20,8 @@ export class Score {
     this.score += points
     this.scoreText.setText('Score: ' + this.score)
   }
+
+  public getScore(): number {
+    return this.score
+  }
 }
