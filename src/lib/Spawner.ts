@@ -14,17 +14,21 @@ export class Spawner {
     this.scene = scene
     this.enemies = scene.add.group({ classType: Fly })
     this.spawnEnemies()
-    setInterval(() => {
-      if (this.enemies.children.entries.length < this.maxEnemiesOnScreen) {
-        for (
-          let i = 0;
-          i < this.maxEnemiesOnScreen - this.enemies.children.entries.length;
-          i++
-        ) {
-          this.spawnEnemy()
+    this.scene.time.addEvent({
+      delay: 1000,
+      callback: () => {
+        if (this.enemies.children.entries.length < this.maxEnemiesOnScreen) {
+          for (
+            let i = 0;
+            i < this.maxEnemiesOnScreen - this.enemies.children.entries.length;
+            i++
+          ) {
+            this.spawnEnemy()
+          }
         }
-      }
-    }, 1000)
+      },
+      loop: true,
+    })
   }
 
   configurePlayer(player: Player): void {

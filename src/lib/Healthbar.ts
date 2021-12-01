@@ -24,7 +24,6 @@ export class Healthbar {
     this.scene.add.existing(this.bar)
     this.setupHealthEvents()
     this.draw()
-    console.log('Went here!')
 
     this.scene.add
       .text(Healthbar.X_POS - 50, Healthbar.Y_POS, 'HP:', {
@@ -36,6 +35,7 @@ export class Healthbar {
 
   setupHealthEvents(): void {
     const spawners = this.scene.getSpawners()
+    console.log(spawners)
     spawners.forEach((spawner) => {
       spawner.enemies.children.entries.forEach((child) => {
         const fly: Fly = child.getData('ref') as Fly

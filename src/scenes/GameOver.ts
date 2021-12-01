@@ -31,8 +31,8 @@ export default class GameOver extends Phaser.Scene {
       '-webkit-text-stroke-color': 'black',
     }) as HTMLElement
 
-    const scoreText = text(`Score: ${this.score}`, {
-      fontSize: '40px',
+    const scoreText = text(`Your score: ${this.score}`, {
+      fontSize: '20px',
       color: 'red',
       fontWeight: 'bolder',
       '-webkit-text-stroke-width': '2px',
@@ -47,7 +47,7 @@ export default class GameOver extends Phaser.Scene {
       .dom(this.scale.width / 2, this.scale.height / 5 + 64, scoreText)
       .setOrigin(0.5)
 
-    const restartButton = button('Restart', {
+    const restartButton = button('Play Again', {
       fontSize: '12px',
       color: 'black',
       fontFamily: 'Daydream',
@@ -60,7 +60,10 @@ export default class GameOver extends Phaser.Scene {
       .setOrigin(0.5)
       .addListener('click')
       .on('click', () => {
-        this.scene.start('start')
+        const gameScene = this.scene.get('game')
+        gameScene.registry.destroy()
+        gameScene.scene.restart()
+        this.scene.start('game')
       })
 
     domElementsContainer.add(gameOverTextDom)
